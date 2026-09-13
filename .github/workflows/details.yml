@@ -1,0 +1,32 @@
+name: my details
+
+#trigger the job when push something in main branch
+
+on: 
+  push:
+    branches: [main]
+# job of the workflow
+jobs:
+#Jobs
+  details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: this is my details
+        run: echo "I am noor"\
+      - name: city
+        run: echo "jalpaiguri"
+
+  education:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my degree
+        run: echo "MCA"
+      - name: College
+        run: echo "SIT"
+
+  experience:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Company experience
+        run: echo "Four Years"
+  
