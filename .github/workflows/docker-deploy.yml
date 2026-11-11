@@ -1,0 +1,28 @@
+name: deploy docker file
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        env:
+            DOCKERHUB_USERNAME: ${{vars.DOCKERHUB_USERNAME}}
+        runs-on: self-hosted
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+
+            - name: Set up Docker
+              uses: docker/setup-docker-action@v5
+            - name: Add runner user to docker group
+              run: |
+                sudo groupadd -f docker
+                sudo usermod -aG docker "$USER"
+                echo "Added $USER to docker group."
+
+            - name: Set up Docker Compose
+              uses: docker/setup-compose-action@v2
+              with:
+                version: latest
+
+            - name: deploy with docker compose
+              run: docker compose up -d --build
