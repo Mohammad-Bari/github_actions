@@ -25,7 +25,7 @@ jobs:
                 context: . #where is your docker file (same repo .)
                 push: true
                 tags: |
-                    ${{vars.DOCKERHUB_USERNAME}}/app:${{github.ref_name}}
-                    ${{vars.DOCKERHUB_USERNAME}}/app:${{github.sha}}
+                    ${{vars.DOCKERHUB_USERNAME}}/github-action-app:${{github.ref_name}}
+                    
 
             
