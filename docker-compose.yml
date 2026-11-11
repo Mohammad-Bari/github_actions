@@ -1,6 +1,6 @@
 services:
 
   web:
-   image: ${ DOCKERHUB_USERNAME }/app:latest
+   image: ${DOCKERHUB_USERNAME}/app:latest
    ports:
     - "80:80"
