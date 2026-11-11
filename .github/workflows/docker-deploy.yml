@@ -1,6 +1,11 @@
 name: deploy docker file
 on:
-    workflow_dispatch:
+    # workflow_dispatch:
+    workflow_run:
+      workflows: ["docker build and push"]
+      types: [completed]
+      branches:
+        - main
 
 jobs:
     deploy:
