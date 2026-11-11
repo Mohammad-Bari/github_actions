@@ -11,13 +11,23 @@ jobs:
             - name: code checkout
               uses: actions/checkout@v4
 
-            - name: Set up Docker
-              uses: docker/setup-docker-action@v5
-            - name: Add runner user to docker group
+            - name: Install Docker
               run: |
-                sudo groupadd -f docker
-                sudo usermod -aG docker "$USER"
-                echo "Added $USER to docker group."
+                sudo apt-get update
+                sudo apt-get install -y docker.io docker-compose-v2
+
+            # Step 3: Start Docker service
+            - name: Start Docker
+              run: |
+                sudo systemctl enable docker
+                sudo systemctl start docker
+
+            # Step 4: Verify Docker installation
+            - name: Verify Docker
+              run: |
+                docker --version
+                docker compose version
+                sudo docker info
 
             - name: Set up Docker Compose
               uses: docker/setup-compose-action@v2
