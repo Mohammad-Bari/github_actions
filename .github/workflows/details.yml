@@ -2,12 +2,13 @@ name: my details
 
 #trigger the job when push something in main branch
 
-on: 
-  push:
-    branches: [main]
-    paths:
-      - '**.html'
-# job of the workflow
+on:
+  workflow_dispatch: 
+#   push:
+#     branches: [main]
+#     paths:
+#       - '**.html'
+# # job of the workflow
 jobs:
 #Jobs
   details:
