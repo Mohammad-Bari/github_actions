@@ -13,7 +13,7 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
-              
+
             - name: SSH to Prod server
               uses: appleboy/ssh-action@v1.0.3
               with:
@@ -46,4 +46,4 @@ jobs:
                     export DOCKERHUB_USER=${{ vars.DOCKERHUB_USERNAME }}
                     export DOCKER_TAG = ${{ github.sha }}
                     echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
-                     cd ~/devops && docker compose down && docker compose up -d --build --force-recreate --pull always
+                    cd ~/devops && docker compose down && docker compose up -d --build --force-recreate --pull always
