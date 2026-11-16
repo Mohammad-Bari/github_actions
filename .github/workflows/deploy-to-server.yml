@@ -11,6 +11,9 @@ jobs:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USERNAME }}
             DOCKER_TAG: ${{ github.sha }}
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              
             - name: SSH to Prod server
               uses: appleboy/ssh-action@v1.0.3
               with:
